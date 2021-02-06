@@ -217,6 +217,18 @@ def user_stats(df, city):
               ' Most of our customers are born in:', common_birth_year)
     except Exception as e:
         print('Couldn\'t obtain the age range of our customers, as an Error has occurred: {}'.format(e))
+
+
+    # Display earliest, most recent, and most common year of birth in histogram
+    if 'Birth Year' in df.columns:
+        plt.hist(df['Birth Year'], 20)
+        plt.xlabel('Year of Birth')
+        plt.ylabel('Frequency')
+        plt.title('User Year of Birth Histogram \n N=5 Years \n City: {}, Month: {}, Day: {}'.format(city, month, day))
+        plt.show()
+    else:
+        print('No date of birth data is available')
+
   
     print("\nThis took %s seconds." % (time.time() - start_time))
     print('-'*40)
