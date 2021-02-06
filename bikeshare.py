@@ -40,17 +40,14 @@ def get_filters():
         
  
     # Get user input for day of week (all, monday, tuesday, ... sunday)   
-    try:
-        day = input('\nWhich day you would like to see the data? please type a day: Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday or all.\n').title()
-        while day not in DAYS_LIST:
+    day = input('\nWhich day you would like to see the data? please type a day: Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday or all.\n').title()
+    print('Your selected day was: ', day)
+    while day not in DAYS_LIST:
             print('\nInvalid answer, please consider your spelling and try again!')
-            day = input('Which day you would like to see the data? please type a day: Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday or all.\n')      
+            day = input('Which day you would like to see the data? please type a day: Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday or all.\n').title()      
         print('Your selected day was: ', day) 
-                         
-              
-        return city, month, day
-    except Exception as e:
-        print('An error has occured with your inputs: {}'.format(e))           
+                               
+    return city, month, day           
     print('-'*40)
     
 
