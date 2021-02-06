@@ -1,4 +1,4 @@
-node_modules
+ignore_folder
 bower_components
 fred.txt
 .csv
