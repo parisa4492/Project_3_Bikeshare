@@ -31,15 +31,13 @@ def get_filters():
 
                  
         # Get user input for month (all, january, february, ... , june)  
-    while True: 
-        month = input('\nWhich month you would like to see the data (January, February, March, April, May, June or all)? Please type-out the full name of the month.\n').title()
-        print('Your selected month was: ', month)
-        if month not in MONTHS_LIST:
-            print('\nInvalid answer, please consider your spelling and try again!')
-            continue
-            month = input('Which month you would like to see the data (January, February, March, April, May, June or all)? Please type out the full name of th month.\n').title()
-        else:
-            break
+     
+    month = input('\nWhich month you would like to see the data (January, February, March, April, May, June or all)? Please type-out the full name of the month.\n').title()
+    print('Your selected month was: ', month)
+    while month not in MONTHS_LIST:
+        print('\nInvalid answer, please consider your spelling and try again!')
+        month = input('Which month you would like to see the data (January, February, March, April, May, June or all)? Please type out the full name of th month.\n').title()
+        
  
     # Get user input for day of week (all, monday, tuesday, ... sunday)   
     try:
