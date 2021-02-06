@@ -40,17 +40,14 @@ def get_filters():
         
  
     # Get user input for day of week (all, monday, tuesday, ... sunday)   
-    try:
-        day = input('\nWhich day you would like to see the data? please type a day: Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday or all.\n').title()
-        while day not in DAYS_LIST:
+    day = input('\nWhich day you would like to see the data? please type a day: Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday or all.\n').title()
+    print('Your selected day was: ', day)
+    while day not in DAYS_LIST:
             print('\nInvalid answer, please consider your spelling and try again!')
-            day = input('Which day you would like to see the data? please type a day: Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday or all.\n')      
+            day = input('Which day you would like to see the data? please type a day: Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday or all.\n').title()      
         print('Your selected day was: ', day) 
-                         
-              
-        return city, month, day
-    except Exception as e:
-        print('An error has occured with your inputs: {}'.format(e))           
+                               
+    return city, month, day           
     print('-'*40)
     
 
@@ -217,6 +214,18 @@ def user_stats(df, city):
               ' Most of our customers are born in:', common_birth_year)
     except Exception as e:
         print('Couldn\'t obtain the age range of our customers, as an Error has occurred: {}'.format(e))
+
+
+    # Display earliest, most recent, and most common year of birth in histogram
+    if 'Birth Year' in df.columns:
+        plt.hist(df['Birth Year'], 20)
+        plt.xlabel('Year of Birth')
+        plt.ylabel('Frequency')
+        plt.title('User Year of Birth Histogram \n N=5 Years \n City: {}, Month: {}, Day: {}'.format(city, month, day))
+        plt.show()
+    else:
+        print('No date of birth data is available')
+
   
     print("\nThis took %s seconds." % (time.time() - start_time))
     print('-'*40)
