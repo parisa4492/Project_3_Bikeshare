@@ -149,10 +149,10 @@ def station_stats(df, city):
 
     # Display most frequent combination of start station and end station trip
     try:
-        df['Trip Combination'] = df['Start Station'] + ' to ' + df['Start Station']
+        df['Trip Combination'] = df['Start Station'] + ' to ' + df['End Station']
         common_trip_combination = df['Trip Combination'].mode()[0]
         common_trip_combination_amount = df.groupby(['Start Station', 'End Station']).size().max()
-        print('The most frequent combination of start station and end station trip is:\n', common_trip_combination, '\n and was driven', common_trip_combination_amount, 'times')
+        print('The most frequent combination of start station and end station trip is:\n', common_trip_combination, '\n and was cycled', common_trip_combination_amount, 'times')
     except Exception as e:
         print('Couldn\'t obtain the most frequent combination of start station and end station trip, as an Error has occurred:{}'.format(e))
 
